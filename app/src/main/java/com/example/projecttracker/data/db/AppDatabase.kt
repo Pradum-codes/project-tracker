@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projecttracker.data.model.Project
 import com.example.projecttracker.data.model.Task
+import com.example.projecttracker.data.model.Note
 
-@Database(entities = [Project::class, Task::class], version = 1, exportSchema = false)
+@Database(entities = [Project::class, Task::class, Note::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun projectDao(): ProjectDao
     abstract fun taskDao(): TaskDao
+    abstract fun notesDao(): NotesDao
 
     companion object {
         private const val DATABASE_NAME = "project_tracker_db"
@@ -21,10 +23,10 @@ abstract class AppDatabase : RoomDatabase() {
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    DATABASE_NAME
-                ).build()
+                                context.applicationContext,
+                                AppDatabase::class.java,
+                                DATABASE_NAME
+                            ).fallbackToDestructiveMigration(true).build()
                 INSTANCE = instance
                 instance
             }

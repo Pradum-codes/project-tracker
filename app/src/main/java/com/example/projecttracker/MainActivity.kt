@@ -16,6 +16,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
 import com.example.projecttracker.data.db.AppDatabase
+import com.example.projecttracker.data.repository.NotesRepository
 import com.example.projecttracker.data.repository.ProjectRepository
 import com.example.projecttracker.ui.navigation.BottomNavigationBar
 import com.example.projecttracker.ui.screens.dashboard.CreateProjectScreen
@@ -26,6 +27,8 @@ import com.example.projecttracker.ui.screens.pomodoro.PomodoroScreen
 import com.example.projecttracker.ui.theme.ProjectTrackerTheme
 import com.example.projecttracker.viewmodel.AppViewModel
 import com.example.projecttracker.viewmodel.AppViewModelFactory
+import com.example.projecttracker.viewmodel.NotesViewModel
+import com.example.projecttracker.viewmodel.NotesViewModelFactory
 
 sealed class Screen(val route: String) {
     data object Dashboard : Screen("dashboard")
@@ -37,6 +40,7 @@ sealed class Screen(val route: String) {
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: AppViewModel
+    private lateinit var notesViewModel: NotesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,16 +51,20 @@ class MainActivity : ComponentActivity() {
 
         viewModel = ViewModelProvider(this, viewModelFactory)[AppViewModel::class.java]
 
+        val notesRepository = NotesRepository(database.notesDao())
+        val notesViewModelFactory = NotesViewModelFactory(notesRepository)
+        notesViewModel = ViewModelProvider(this, notesViewModelFactory)[NotesViewModel::class.java]
+
         setContent {
             ProjectTrackerTheme {
-                MainScreen(viewModel)
+                MainScreen(viewModel, notesViewModel)
             }
         }
     }
 }
 
 @Composable
-fun MainScreen(viewModel: AppViewModel) {
+fun MainScreen(viewModel: AppViewModel, notesViewModel: NotesViewModel) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -92,7 +100,7 @@ fun MainScreen(viewModel: AppViewModel) {
                     PomodoroScreen()
                 }
                 composable(Screen.Notes.route) {
-                    Notes()
+                    Notes(notesViewModel)
                 }
                 composable(Screen.CreateProject.route) {
                     CreateProjectScreen(navController, viewModel)
