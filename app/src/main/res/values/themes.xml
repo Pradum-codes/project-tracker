@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.ProjectTracker" parent="android:Theme.Material.Light.NoActionBar" >
-<!--        <item name="android:windowSplashScreenBackground">@color/black</item>-->
-    </style>
+    <style name="Theme.ProjectTracker" parent="Theme.ProjectTracker.NoActionBar" />
+    <style name="Theme.ProjectTracker.NoActionBar" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

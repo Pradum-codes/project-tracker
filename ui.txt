@@ -1,0 +1,1059 @@
+<!-- Create Project -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Project - ProjectTracker</title>
+<!-- Google Fonts: Noto Serif & Manrope -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#3b6934",
+              "on-tertiary-fixed-variant": "#71314c",
+              "surface-container-low": "#fff2e2",
+              "primary-fixed-dim": "#a1d494",
+              "surface-variant": "#efe0cd",
+              "tertiary-fixed-dim": "#ffb0cc",
+              "on-primary-fixed-variant": "#23501e",
+              "primary-container": "#2d5a27",
+              "on-secondary-fixed-variant": "#713527",
+              "on-surface-variant": "#42493e",
+              "inverse-on-surface": "#feefdb",
+              "tertiary-fixed": "#ffd9e4",
+              "on-primary-fixed": "#002201",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#7c3a55",
+              "tertiary": "#60233e",
+              "surface-dim": "#e6d8c5",
+              "surface-container": "#fbecd9",
+              "inverse-primary": "#a1d494",
+              "outline-variant": "#c2c9bb",
+              "on-surface": "#221a0f",
+              "surface-bright": "#fff8f3",
+              "outline": "#72796e",
+              "secondary-container": "#fea995",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "secondary": "#8e4c3c",
+              "on-tertiary-fixed": "#3b0520",
+              "primary-fixed": "#bcf0ae",
+              "secondary-fixed-dim": "#ffb4a3",
+              "surface": "#fff8f3",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#ffaac8",
+              "secondary-fixed": "#ffdad2",
+              "on-secondary-container": "#793b2c",
+              "primary": "#154212",
+              "surface-container-highest": "#efe0cd",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "background": "#fff8f3",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#9dd090",
+              "surface-container-high": "#f5e6d3",
+              "on-background": "#221a0f",
+              "on-secondary-fixed": "#390b03",
+              "inverse-surface": "#372f22"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #fff8f3;
+            color: #221a0f;
+        }
+        .serif-text { font-family: 'Noto Serif', serif; }
+        .bg-atelier-gradient {
+            background: linear-gradient(180deg, #fff2e2 0%, #fff8f3 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen bg-atelier-gradient pb-32">
+<!-- TopAppBar Section -->
+<header class="fixed top-0 z-50 w-full bg-[#fff8f3]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(34,26,15,0.06)] px-8 py-4 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-[#44493f] hover:bg-[#efe0cd]/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-['Noto_Serif'] font-bold tracking-tight text-2xl text-[#154212]">Create Project</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="minimalist illustrated avatar of a professional designer with soft features and warm colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSwMKQQm1nL8NGEt8X9MLm8sgGnTOsvY5wf2XGce5z5-vBBE2qcoSOtRDQIxa030RmOZSbUUBju6lxSg-QqZYaBfRhqHbxkVKMm4jHvmDrceKUv50Ep4UbdZnLFE4awCitW1_10Uj0nypmDM9zn6TRhwMkBDp6xCP4fHYluUA9YdUF0N4aX0NYuL99ju1PB2Df7FDy7Gfwjwle-gM5ZDPZdA84kZQq9ycskLsx1l5bOebTI5cZmf8iX13tS5oBJzg5o5-D8cxFLT7k"/>
+</div>
+</header>
+<main class="pt-28 px-8 max-w-lg mx-auto">
+<!-- Editorial Header -->
+<div class="mb-12">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 block">New Initiative</span>
+<h2 class="serif-text text-4xl font-black text-primary leading-tight">Lay the foundation for your next masterpiece.</h2>
+</div>
+<form class="space-y-10">
+<!-- Project Identity Section -->
+<section class="space-y-6">
+<div class="group">
+<label class="block text-sm font-semibold text-on-surface-variant mb-3 ml-2">Project Title</label>
+<input class="w-full px-6 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/30 transition-all text-on-surface placeholder:text-on-surface-variant/50" placeholder="e.g. Redesigning the Digital Atelier" type="text"/>
+</div>
+<div class="group">
+<label class="block text-sm font-semibold text-on-surface-variant mb-3 ml-2">Tech Stack</label>
+<div class="relative">
+<input class="w-full px-6 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/30 transition-all text-on-surface placeholder:text-on-surface-variant/50" placeholder="React, Tailwind, Node.js..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant/40" data-icon="code">code</span>
+</div>
+</div>
+<div class="group">
+<label class="block text-sm font-semibold text-on-surface-variant mb-3 ml-2">GitHub Repository</label>
+<div class="relative">
+<input class="w-full px-6 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/30 transition-all text-on-surface placeholder:text-on-surface-variant/50" placeholder="https://github.com/username/repo" type="url"/>
+<span class="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant/40" data-icon="link">link</span>
+</div>
+</div>
+</section>
+<!-- Timeline Section -->
+<section class="bg-surface-container-low p-8 rounded-lg space-y-6 shadow-sm">
+<h3 class="serif-text text-xl font-bold text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                    Timeline
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-tighter mb-2 ml-1">Start Date</label>
+<input class="w-full px-4 py-3 bg-surface-container-lowest border-none rounded-md focus:ring-2 focus:ring-primary/30 text-on-surface" type="date" value="2023-10-01"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-tighter mb-2 ml-1">End Date</label>
+<input class="w-full px-4 py-3 bg-surface-container-lowest border-none rounded-md focus:ring-2 focus:ring-primary/30 text-on-surface" type="date" value="2023-09-15"/>
+</div>
+</div>
+<!-- Validation Error State -->
+<div class="flex items-center gap-3 px-4 py-3 bg-secondary-container/20 rounded-md">
+<span class="material-symbols-outlined text-secondary" data-icon="error_outline">error_outline</span>
+<p class="text-sm font-medium text-on-secondary-container">End date must be after start date</p>
+</div>
+</section>
+<!-- Decorative Visual Break -->
+<div class="h-48 w-full rounded-lg overflow-hidden relative">
+<img alt="Workspace Background" class="w-full h-full object-cover" data-alt="serene modern workspace with natural wood desk, soft morning sunlight through large windows, and a single green plant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf6aF_w5yOXQoQfGi5zLjMVD8K-sq-SsbLn2a0bUVz7K0y0L-p4kisWkCN_PbcLV4SHJP0OnRKdrml5eKfkR9rjYshXBaM2qNvcwerN7WrxfcfsohM--C-oAuOEXOHpZgdPKq9qlCJCteUmQEpQ8zKzUfx91JbgBPy9M4Ec26dOAZuRCHat5tMWZfauPKAo1Gxrd6Hogi99O0-WImTeUfZek-6V88I501lbJqPy2nLE3fyXeZ1_4hoVJ_c68-JNetWCJuDdJy9TLgU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<!-- Action Button -->
+<div class="pt-6">
+<button class="w-full py-5 bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white rounded-xl font-bold text-lg shadow-[0_20px_40px_rgba(21,66,18,0.2)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Save Project
+                </button>
+<button class="w-full py-4 mt-4 text-on-surface-variant font-medium hover:text-primary transition-colors" type="button">
+                    Save as Draft
+                </button>
+</div>
+</form>
+</main>
+<!-- BottomNavBar Section -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fff8f3]/90 backdrop-blur-2xl border-t border-[#c2c9bb]/15 shadow-[0_-10px_30px_rgba(34,26,15,0.04)] z-50 rounded-t-[3rem]">
+<!-- Dashboard Item (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Dashboard</span>
+</a>
+<!-- Pomodoro Item (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="timer">timer</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Pomodoro</span>
+</a>
+<!-- Notes Item (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Notes</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Notes & Edit Modal -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#3b6934",
+              "on-tertiary-fixed-variant": "#71314c",
+              "surface-container-low": "#fff2e2",
+              "primary-fixed-dim": "#a1d494",
+              "surface-variant": "#efe0cd",
+              "tertiary-fixed-dim": "#ffb0cc",
+              "on-primary-fixed-variant": "#23501e",
+              "primary-container": "#2d5a27",
+              "on-secondary-fixed-variant": "#713527",
+              "on-surface-variant": "#42493e",
+              "inverse-on-surface": "#feefdb",
+              "tertiary-fixed": "#ffd9e4",
+              "on-primary-fixed": "#002201",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#7c3a55",
+              "tertiary": "#60233e",
+              "surface-dim": "#e6d8c5",
+              "surface-container": "#fbecd9",
+              "inverse-primary": "#a1d494",
+              "outline-variant": "#c2c9bb",
+              "on-surface": "#221a0f",
+              "surface-bright": "#fff8f3",
+              "outline": "#72796e",
+              "secondary-container": "#fea995",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "secondary": "#8e4c3c",
+              "on-tertiary-fixed": "#3b0520",
+              "primary-fixed": "#bcf0ae",
+              "secondary-fixed-dim": "#ffb4a3",
+              "surface": "#fff8f3",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#ffaac8",
+              "secondary-fixed": "#ffdad2",
+              "on-secondary-container": "#793b2c",
+              "primary": "#154212",
+              "surface-container-highest": "#efe0cd",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "background": "#fff8f3",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#9dd090",
+              "surface-container-high": "#f5e6d3",
+              "on-background": "#221a0f",
+              "on-secondary-fixed": "#390b03",
+              "inverse-surface": "#372f22"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f3;
+            color: #221a0f;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-secondary-container selection:text-on-secondary-container min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-[#fff8f3]/80 dark:bg-[#1a1c18]/80 backdrop-blur-xl docked full-width top-0 z-50 shadow-[0_20px_40px_rgba(34,26,15,0.06)] bg-gradient-to-b from-[#fff2e2] to-[#fff8f3] dark:from-[#252a21] dark:to-[#1a1c18] sticky top-0">
+<div class="flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close-up portrait of a serene young woman with natural light in a bright artist studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN4mhqNceQrQAOWpNQn35bV2FyXH-aa5qwg75HnUgm4CCzvxsxmjxn87EMTb-nV_Quq-5vNL3Jm8_KEg7U-bfeE8-cxhAN6hL4uEjpjqP5xmq2FE3MGA3j4RsaDrn4E-CKq8ZgKHGeiqV9NCzfqxDRVY1bpZSWc4gQ2siTN5Tf5MadpDx5THmbPL2vGkiEKG0Kt63m7qOqGw1oorYZrF3EHQsxtl_0LeYjQsSfTtC-BCPx_pML6d83ZsPIURBO3jFoACcFO74D--5S"/>
+</div>
+<h1 class="font-['Noto_Serif'] font-black text-[#154212] dark:text-[#b0f296] text-2xl tracking-tight">ProjectTracker</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#efe0cd]/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#154212] dark:text-[#b0f296]">settings</span>
+</button>
+</div>
+</header>
+<main class="px-8 pt-10 max-w-2xl mx-auto">
+<!-- Section Header -->
+<div class="mb-12">
+<p class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-2">Personal Workspace</p>
+<h2 class="font-headline text-5xl font-bold text-on-surface tracking-tight leading-tight">Your Notes</h2>
+</div>
+<!-- Notes Grid -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Note Card 1 -->
+<div class="bg-surface-container-low p-7 rounded-lg transition-all hover:bg-surface-container-highest hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-bold text-primary px-3 py-1 bg-primary-fixed rounded-full">Project Alpha</span>
+<span class="text-xs text-on-surface-variant">2h ago</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3 text-on-surface">Weekly Strategy Alignment</h3>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3">The focus for this week is reducing friction in the user onboarding flow. We need to audit the first three screens and ensure the value proposition is front and center...</p>
+</div>
+</div>
+<!-- Note Card 2 -->
+<div class="bg-surface-container-low p-7 rounded-lg transition-all hover:bg-surface-container-highest hover:scale-[1.02] cursor-pointer group overflow-hidden">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-bold text-secondary px-3 py-1 bg-secondary-fixed rounded-full">Creative</span>
+<span class="text-xs text-on-surface-variant">Yesterday</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3 text-on-surface">Color Palette Inspiration</h3>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3">Deep mossy greens paired with soft terracotta and unbleached linen textures. Aiming for an organic, artisanal feel that contrasts with sharp typography.</p>
+</div>
+</div>
+<!-- Note Card 3 -->
+<div class="bg-surface-container-low p-7 rounded-lg transition-all hover:bg-surface-container-highest hover:scale-[1.02] cursor-pointer group">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-xs font-bold text-tertiary px-3 py-1 bg-tertiary-fixed rounded-full">Reading List</span>
+<span class="text-xs text-on-surface-variant">Oct 12</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-3 text-on-surface">The Architecture of Happiness</h3>
+<p class="text-on-surface-variant leading-relaxed line-clamp-3">Key takeaway: Our environment directly influences our mood and productivity. The importance of natural light and intentional space design cannot be overstated.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center px-6">
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-md"></div>
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-lg shadow-[0_20px_80px_rgba(34,26,15,0.2)] relative z-10 overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-2 w-full"></div>
+<div class="p-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline text-2xl font-bold text-on-surface">Edit Note</h3>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-bold text-on-surface-variant mb-2">Title</label>
+<input class="w-full bg-surface-container-highest border-none rounded-md px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/30 transition-shadow" type="text" value="Weekly Strategy Alignment"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-on-surface-variant mb-2">Content</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-md px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/30 transition-shadow resize-none" rows="6">The focus for this week is reducing friction in the user onboarding flow. We need to audit the first three screens and ensure the value proposition is front and center. 
+
+Key Action Items:
+- Mock up new welcome screen
+- Simplify sign-up form fields
+- Add social proof elements</textarea>
+</div>
+<div class="flex items-center gap-4 pt-4">
+<button class="flex-1 py-4 px-6 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                            Save Changes
+                        </button>
+<button class="px-6 py-4 rounded-xl font-headline text-on-surface-variant hover:text-on-surface transition-colors">
+                            Cancel
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FAB -->
+<button class="fixed bottom-28 right-8 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary shadow-[0_20px_40px_rgba(34,26,15,0.2)] flex items-center justify-center z-40 active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fff8f3]/90 dark:bg-[#1a1c18]/90 backdrop-blur-2xl border-t border-[#c2c9bb]/15 shadow-[0_-10px_30px_rgba(34,26,15,0.04)] z-50 rounded-t-[3rem]">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-[#44493f] dark:text-[#c2c9bb] px-6 py-2 hover:text-[#154212] dark:hover:text-[#b0f296] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Dashboard</span>
+</a>
+<!-- Pomodoro -->
+<a class="flex flex-col items-center justify-center text-[#44493f] dark:text-[#c2c9bb] px-6 py-2 hover:text-[#154212] dark:hover:text-[#b0f296] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">timer</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Pomodoro</span>
+</a>
+<!-- Notes (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white rounded-[3rem] px-6 py-2 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Notes</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Pomodoro Timer -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pomodoro Timer - ProjectTracker</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Manrope:wght@400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#3b6934",
+              "on-tertiary-fixed-variant": "#71314c",
+              "surface-container-low": "#fff2e2",
+              "primary-fixed-dim": "#a1d494",
+              "surface-variant": "#efe0cd",
+              "tertiary-fixed-dim": "#ffb0cc",
+              "on-primary-fixed-variant": "#23501e",
+              "primary-container": "#2d5a27",
+              "on-secondary-fixed-variant": "#713527",
+              "on-surface-variant": "#42493e",
+              "inverse-on-surface": "#feefdb",
+              "tertiary-fixed": "#ffd9e4",
+              "on-primary-fixed": "#002201",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#7c3a55",
+              "tertiary": "#60233e",
+              "surface-dim": "#e6d8c5",
+              "surface-container": "#fbecd9",
+              "inverse-primary": "#a1d494",
+              "outline-variant": "#c2c9bb",
+              "on-surface": "#221a0f",
+              "surface-bright": "#fff8f3",
+              "outline": "#72796e",
+              "secondary-container": "#fea995",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "secondary": "#8e4c3c",
+              "on-tertiary-fixed": "#3b0520",
+              "primary-fixed": "#bcf0ae",
+              "secondary-fixed-dim": "#ffb4a3",
+              "surface": "#fff8f3",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#ffaac8",
+              "secondary-fixed": "#ffdad2",
+              "on-secondary-container": "#793b2c",
+              "primary": "#154212",
+              "surface-container-highest": "#efe0cd",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "background": "#fff8f3",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#9dd090",
+              "surface-container-high": "#f5e6d3",
+              "on-background": "#221a0f",
+              "on-secondary-fixed": "#390b03",
+              "inverse-surface": "#372f22"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body {
+            background-color: #fff8f3;
+            color: #221a0f;
+            -webkit-font-smoothing: antialiased;
+        }
+        .timer-glow {
+            box-shadow: 0 0 80px rgba(21, 66, 18, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body min-h-screen selection:bg-primary-fixed selection:text-primary">
+<!-- TopAppBar -->
+<header class="bg-[#fff8f3]/80 backdrop-blur-xl docked full-width top-0 z-50 fixed w-full bg-gradient-to-b from-[#fff2e2] to-[#fff8f3] shadow-[0_20px_40px_rgba(34,26,15,0.06)]">
+<div class="flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with a kind expression in soft natural studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGnjpUsvU8mZaHMJqNVWZ9l7GjHVI-yQUBtD0vlxfZJEqtbEC8Mg9e3GHdHRflxAhAAKnY_fOELj43ltMsZ9TFbOVJwHRD4_P3SuQOAq7CGEpl_21az4w3AVBsQR0nYHpfLyPMt1ecoTnDC73Oov4TJsOJ36ohGrGQSUXY6jTZeBFiS8wts3taDOrTbMsNWUrocw1_CYfqS5J27jQhVGaSQySDcAXzr-mcRJOJTjGm95HwOma3yQAgjTxEYAZK65xLwb_w3sHpbyOy"/>
+</div>
+<h1 class="font-['Noto_Serif'] font-black text-[#154212] tracking-tight text-2xl">ProjectTracker</h1>
+</div>
+<button class="text-[#154212] p-2 hover:bg-[#efe0cd]/50 transition-colors active:scale-95 duration-200 rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-32 px-8 max-w-md mx-auto min-h-screen flex flex-col items-center justify-center">
+<!-- Screen Title Section -->
+<div class="w-full mb-12 text-center">
+<span class="font-label text-on-secondary-fixed-variant text-sm tracking-widest uppercase font-semibold mb-2 block">Focus Session</span>
+<h2 class="font-headline text-5xl font-bold text-on-surface tracking-tight">Pomodoro</h2>
+</div>
+<!-- Timer Section -->
+<div class="relative w-full aspect-square flex items-center justify-center mb-16">
+<!-- Subtle Decorative Gradients -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container-low to-surface-transparent rounded-full opacity-50"></div>
+<!-- Circular Progress Ring (SVG) -->
+<div class="absolute inset-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="50%" cy="50%" fill="transparent" r="45%" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="50%" cy="50%" fill="transparent" r="45%" stroke="currentColor" stroke-dasharray="100 100" stroke-linecap="round" stroke-width="8" style="stroke-dasharray: 280; stroke-dashoffset: 70;"></circle>
+</svg>
+</div>
+<!-- Central Timer Display -->
+<div class="relative z-10 bg-surface-container-lowest rounded-full w-[85%] h-[85%] flex flex-col items-center justify-center timer-glow border border-outline-variant/15">
+<span class="font-body text-7xl font-extrabold tracking-tighter text-on-surface">25:00</span>
+<div class="flex items-center gap-2 mt-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label text-sm font-medium">Deep Work</span>
+</div>
+</div>
+</div>
+<!-- Timer Controls -->
+<div class="w-full grid grid-cols-1 gap-6">
+<div class="flex justify-center items-center gap-6 w-full">
+<!-- Reset Button -->
+<button class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center hover:bg-surface-container-highest transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="replay">replay</span>
+</button>
+<!-- Start Button (Primary) -->
+<button class="flex-1 h-20 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(21,66,18,0.15)] hover:opacity-90 transition-all active:scale-95 duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-body text-xl font-bold">Start</span>
+</button>
+<!-- Pause Button -->
+<button class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center hover:bg-surface-container-highest transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="pause">pause</span>
+</button>
+</div>
+</div>
+<!-- Task Context (Intentional Asymmetry) -->
+<div class="mt-16 w-full p-6 bg-surface-container-low rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/10 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-700"></div>
+<div class="relative z-10">
+<p class="font-label text-xs font-bold text-secondary uppercase tracking-widest mb-1">Current Focus</p>
+<h3 class="font-headline text-xl font-bold text-on-surface">Finalize Project Proposal</h3>
+<div class="flex items-center gap-4 mt-4">
+<div class="flex -space-x-2">
+<img alt="team member" class="w-6 h-6 rounded-full ring-2 ring-surface-container-low" data-alt="professional woman smiling warmly in soft outdoor sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTwPML3yfHF5BDSlQx5o8sTaiMxZ2gvnYCyt7KttydI1zAT-GTGcg8uB3oh3mBOc5w31Va2-aZHoWWiZ75UGv5-5Yf1jhYeY2I_4NnfzgcfxjmqPlZRrc94ZfVFL9QM9fFX2sbNQdIZdWJNi33b_AiCyV8U_A5vu-EKbie_PdsclqJMd5t0ajHC6f9BhGN6LwZdIdPlldT5kOR8DSGwnHaldek8wnuy3VtyQajXJwKXRg9_2uFgKbm3hB9rK1y8z1dSwsfj0oWkX-J"/>
+<div class="w-6 h-6 rounded-full bg-primary-fixed-dim ring-2 ring-surface-container-low flex items-center justify-center text-[10px] font-bold text-on-primary-fixed">+2</div>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Due in 4 hours</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fff8f3]/90 backdrop-blur-2xl z-50 rounded-t-[3rem] border-t border-[#c2c9bb]/15 shadow-[0_-10px_30px_rgba(34,26,15,0.04)]">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Dashboard</span>
+</a>
+<!-- Pomodoro (Active) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white rounded-[3rem] px-6 py-2 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="timer" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Pomodoro</span>
+</a>
+<!-- Notes -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Notes</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Dashboard -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#3b6934",
+              "on-tertiary-fixed-variant": "#71314c",
+              "surface-container-low": "#fff2e2",
+              "primary-fixed-dim": "#a1d494",
+              "surface-variant": "#efe0cd",
+              "tertiary-fixed-dim": "#ffb0cc",
+              "on-primary-fixed-variant": "#23501e",
+              "primary-container": "#2d5a27",
+              "on-secondary-fixed-variant": "#713527",
+              "on-surface-variant": "#42493e",
+              "inverse-on-surface": "#feefdb",
+              "tertiary-fixed": "#ffd9e4",
+              "on-primary-fixed": "#002201",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#7c3a55",
+              "tertiary": "#60233e",
+              "surface-dim": "#e6d8c5",
+              "surface-container": "#fbecd9",
+              "inverse-primary": "#a1d494",
+              "outline-variant": "#c2c9bb",
+              "on-surface": "#221a0f",
+              "surface-bright": "#fff8f3",
+              "outline": "#72796e",
+              "secondary-container": "#fea995",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "secondary": "#8e4c3c",
+              "on-tertiary-fixed": "#3b0520",
+              "primary-fixed": "#bcf0ae",
+              "secondary-fixed-dim": "#ffb4a3",
+              "surface": "#fff8f3",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#ffaac8",
+              "secondary-fixed": "#ffdad2",
+              "on-secondary-container": "#793b2c",
+              "primary": "#154212",
+              "surface-container-highest": "#efe0cd",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "background": "#fff8f3",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#9dd090",
+              "surface-container-high": "#f5e6d3",
+              "on-background": "#221a0f",
+              "on-secondary-fixed": "#390b03",
+              "inverse-surface": "#372f22"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f3;
+            color: #221a0f;
+            -webkit-font-smoothing: antialiased;
+        }
+        .asymmetric-canvas {
+            background: linear-gradient(180deg, #fff2e2 0%, #fff8f3 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-secondary-container/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full bg-[#fff8f3]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(34,26,15,0.06)]">
+<div class="flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional woman in a sunlit artist studio with warm natural lighting and soft focus art supplies in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdzE9eafhlyA1yV_iLWgKS9EKUDbXzxMrwYIv6YMAkd7XuIyMIhpyO0ebPftKM5QlFsS-uN7Iwz45ugOBTTtT6W8yuRowstzRKStuT7LDlwH4unPAJJIN3EoU_No37DJfQ0166-cvmYTtpT876q1w4YkROknTmvHBBjsba_w2kR6i7G8oziS16LkWLElx4LeJSY0MzPw4_euVgVSRq_SpLih-buye-UNknikBKcYLsVae6OWbeKmQ5_KLgRX1NpTHCn317Y8qDOkBi"/>
+</div>
+<h1 class="font-headline font-black text-[#154212] tracking-tight text-2xl">ProjectTracker</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#efe0cd]/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#44493f]">settings</span>
+</button>
+</div>
+</header>
+<main class="min-h-screen pt-24 pb-32 px-8 asymmetric-canvas">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col gap-1">
+<span class="font-label text-sm uppercase tracking-[0.2em] text-on-surface-variant opacity-70">Workspace</span>
+<h2 class="font-headline text-4xl font-bold text-primary tracking-tight">Your Projects</h2>
+</div>
+</header>
+<!-- Bento Grid Project List -->
+<div class="grid grid-cols-1 gap-8">
+<!-- Card 1: Active Project -->
+<section class="group relative bg-surface-container-lowest rounded-lg p-7 transition-all duration-300 hover:scale-[1.02] shadow-[0_10px_30px_rgba(34,26,15,0.03)] hover:shadow-[0_20px_40px_rgba(34,26,15,0.06)] overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-primary rounded-l-lg"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-3">Eco-Interior Branding</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded-full">Figma</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded-full">Adobe Suite</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline transition-colors hover:bg-primary/10 hover:text-primary">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+</div>
+<div class="space-y-6">
+<!-- Progress Section -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-on-surface-variant">Progress</span>
+<span class="text-primary font-bold">75%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- Metadata -->
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-xs font-medium">Dec 15, 2026</span>
+</div>
+<div class="flex items-center gap-1 px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="text-xs font-bold">5 days left</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 2: Creative Project -->
+<section class="group relative bg-surface-container-low rounded-lg p-7 transition-all duration-300 hover:scale-[1.02] shadow-[0_10px_30px_rgba(34,26,15,0.03)] hover:shadow-[0_20px_40px_rgba(34,26,15,0.06)] overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 -mr-8 -mt-8 bg-secondary-container/20 rounded-full blur-3xl group-hover:bg-secondary-container/40 transition-colors"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-3">Ceramic Studio Portfolio</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded-full">Next.js</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded-full">Tailwind</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-outline-variant/30 flex items-center justify-center text-outline transition-colors hover:bg-primary/10 hover:text-primary">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-on-surface-variant">Progress</span>
+<span class="text-primary font-bold">32%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-xs font-medium">Jan 08, 2027</span>
+</div>
+<div class="flex items-center gap-1 px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+<span class="text-xs font-bold">24 days left</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Deep Focus -->
+<section class="group relative bg-surface-container-highest/40 rounded-lg p-7 transition-all duration-300 hover:scale-[1.02] shadow-[0_10px_30px_rgba(34,26,15,0.03)] hover:shadow-[0_20px_40px_rgba(34,26,15,0.06)] overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-3">Sustainable App UI</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white/50 text-on-surface-variant text-xs font-bold rounded-full">React Native</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white transition-all active:scale-90">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-on-surface-variant">Progress</span>
+<span class="text-primary font-bold">100%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-xs font-medium">Dec 01, 2026</span>
+</div>
+<div class="flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+<span class="text-xs font-bold">Completed</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-28 right-8 w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white shadow-[0_20px_40px_rgba(21,66,18,0.25)] flex items-center justify-center active:scale-90 transition-all duration-300 z-50 group">
+<span class="material-symbols-outlined text-3xl transition-transform group-hover:rotate-90">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fff8f3]/90 backdrop-blur-2xl border-t border-[#c2c9bb]/15 z-50 rounded-t-[3rem] shadow-[0_-10px_30px_rgba(34,26,15,0.04)]">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white rounded-[3rem] px-6 py-2 active:scale-90 duration-300 ease-out transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body font-medium text-[12px] mt-0.5">Dashboard</span>
+</a>
+<!-- Pomodoro -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-body font-medium text-[12px] mt-0.5">Pomodoro</span>
+</a>
+<!-- Notes -->
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body font-medium text-[12px] mt-0.5">Notes</span>
+</a>
+</nav>
+</body></html>
+
+<!-- Project Detail -->
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#3b6934",
+              "on-tertiary-fixed-variant": "#71314c",
+              "surface-container-low": "#fff2e2",
+              "primary-fixed-dim": "#a1d494",
+              "surface-variant": "#efe0cd",
+              "tertiary-fixed-dim": "#ffb0cc",
+              "on-primary-fixed-variant": "#23501e",
+              "primary-container": "#2d5a27",
+              "on-secondary-fixed-variant": "#713527",
+              "on-surface-variant": "#42493e",
+              "inverse-on-surface": "#feefdb",
+              "tertiary-fixed": "#ffd9e4",
+              "on-primary-fixed": "#002201",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#7c3a55",
+              "tertiary": "#60233e",
+              "surface-dim": "#e6d8c5",
+              "surface-container": "#fbecd9",
+              "inverse-primary": "#a1d494",
+              "outline-variant": "#c2c9bb",
+              "on-surface": "#221a0f",
+              "surface-bright": "#fff8f3",
+              "outline": "#72796e",
+              "secondary-container": "#fea995",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "secondary": "#8e4c3c",
+              "on-tertiary-fixed": "#3b0520",
+              "primary-fixed": "#bcf0ae",
+              "secondary-fixed-dim": "#ffb4a3",
+              "surface": "#fff8f3",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#ffaac8",
+              "secondary-fixed": "#ffdad2",
+              "on-secondary-container": "#793b2c",
+              "primary": "#154212",
+              "surface-container-highest": "#efe0cd",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "background": "#fff8f3",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#9dd090",
+              "surface-container-high": "#f5e6d3",
+              "on-background": "#221a0f",
+              "on-secondary-fixed": "#390b03",
+              "inverse-surface": "#372f22"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f3;
+            color: #221a0f;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .asymmetric-gradient {
+            background: linear-gradient(135deg, #fff2e2 0%, #fff8f3 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary-container selection:text-white">
+<header class="fixed top-0 z-50 w-full bg-[#fff8f3]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(34,26,15,0.06)] flex justify-between items-center px-8 py-4">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#efe0cd]/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#154212]">arrow_back</span>
+</button>
+<h1 class="font-headline font-black text-[#154212] tracking-tight text-2xl">ProjectTracker</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#efe0cd]/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#154212]">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional woman with a calm expression in a brightly lit studio with warm earth tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdRhpeXNDCqfyOQGoHi9A5lq8zNi8rtgNR62INiyl8oVcVE7qky8fppBY1eRnKDdsO0K_TNKafKGfEQFdA5-uU_HxOXVVZiu6UXylOgNbiu2JWv0fotedo8Q39hKj1J6UVARxsudGLOUX_OiJ_hsWZm-yjV2voD7uUUToE_POCZJIQAuAsIu-8aHQU2cDJECIcPJBwCaX6ehJmlROpZSKM4cG1NvVM1VfBJY1J0jf0xg5RYbJwNUjVCaP1O2XAxuGppIVxWa6YJp_u"/>
+</div>
+</div>
+</header>
+<main class="min-h-screen pt-28 pb-32 px-8 asymmetric-gradient">
+<section class="mb-12">
+<span class="font-label text-on-surface-variant text-sm tracking-widest uppercase mb-2 block">Active Development</span>
+<h2 class="font-headline font-bold text-4xl text-on-surface leading-tight">EcoSync Mobile Application</h2>
+</section>
+<div class="bg-surface-container-lowest rounded-lg p-5 shadow-[0_20px_40px_rgba(34,26,15,0.06)] mb-8 flex flex-col gap-6">
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-1.5 bg-surface-container-highest text-primary text-sm font-medium rounded-full">React Native</span>
+<span class="px-4 py-1.5 bg-surface-container-highest text-primary text-sm font-medium rounded-full">Tailwind CSS</span>
+<span class="px-4 py-1.5 bg-surface-container-highest text-primary text-sm font-medium rounded-full">TypeScript</span>
+<span class="px-4 py-1.5 bg-surface-container-highest text-primary text-sm font-medium rounded-full">Firebase</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/15">
+<a class="flex items-center gap-3 text-secondary font-medium hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">link</span>
+<span class="underline underline-offset-4 decoration-secondary/30">github.com/design/ecosync</span>
+</a>
+<span class="material-symbols-outlined text-on-surface-variant/40">code</span>
+</div>
+</div>
+<section class="mb-12">
+<h3 class="font-headline text-xl font-bold text-on-surface mb-6">Capture Focus</h3>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-md py-4 pl-6 pr-16 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary/30 transition-all outline-none" placeholder="What needs to be done next?" type="text"/>
+<button class="absolute right-2 top-2 bottom-2 aspect-square flex items-center justify-center bg-gradient-to-br from-primary to-primary-container text-white rounded-md active:scale-95 duration-200">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline text-xl font-bold text-on-surface">Deliverables</h3>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">4 REMAINING</span>
+</div>
+<div class="bg-surface-container-low rounded-DEFAULT p-5 flex items-center gap-4 transition-all hover:bg-surface-container-high group">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input class="peer h-6 w-6 border-2 border-outline rounded-md checked:bg-primary checked:border-primary transition-all cursor-pointer appearance-none" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<p class="flex-grow font-body text-on-surface font-medium">Refactor navigation architecture</p>
+<button class="text-on-surface-variant/30 hover:text-error transition-colors opacity-0 group-hover:opacity-100 active:scale-90">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="bg-surface-container-low rounded-DEFAULT p-5 flex items-center gap-4 transition-all hover:bg-surface-container-high group">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input class="peer h-6 w-6 border-2 border-outline rounded-md checked:bg-primary checked:border-primary transition-all cursor-pointer appearance-none" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<p class="flex-grow font-body text-on-surface font-medium">Design dark mode color tokens</p>
+<button class="text-on-surface-variant/30 hover:text-error transition-colors opacity-0 group-hover:opacity-100 active:scale-90">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="bg-surface-container-high/40 rounded-DEFAULT p-5 flex items-center gap-4 opacity-60">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input checked="" class="peer h-6 w-6 border-2 border-primary bg-primary rounded-md transition-all cursor-pointer appearance-none" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-100 pointer-events-none" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<p class="flex-grow font-body text-on-surface font-medium line-through">Setup project repository</p>
+<button class="text-on-surface-variant/30 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<div class="bg-surface-container-low rounded-DEFAULT p-5 flex items-center gap-4 transition-all hover:bg-surface-container-high group">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input class="peer h-6 w-6 border-2 border-outline rounded-md checked:bg-primary checked:border-primary transition-all cursor-pointer appearance-none" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white text-xs opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<p class="flex-grow font-body text-on-surface font-medium">Implement authentication flow</p>
+<button class="text-on-surface-variant/30 hover:text-error transition-colors opacity-0 group-hover:opacity-100 active:scale-90">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fff8f3]/90 backdrop-blur-2xl border-t border-[#c2c9bb]/15 shadow-[0_-10px_30px_rgba(34,26,15,0.04)] z-50 rounded-t-[3rem]">
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white rounded-[3rem] px-6 py-2 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Pomodoro</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#44493f] px-6 py-2 hover:text-[#154212] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-['Manrope'] font-medium text-[12px]">Notes</span>
+</a>
+</nav>
+</body></html>

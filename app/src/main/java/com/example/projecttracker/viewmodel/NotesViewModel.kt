@@ -2,37 +2,61 @@ package com.example.projecttracker.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.projecttracker.data.model.Note
-import com.example.projecttracker.data.repository.NotesRepository
-import kotlinx.coroutines.flow.Flow
+import com.example.projecttracker.data.model.NoteEntity
+import com.example.projecttracker.data.repository.NoteRepository
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class NotesViewModel(
-    private val repository: NotesRepository
+    private val noteRepository: NoteRepository
 ) : ViewModel() {
+    val notes: StateFlow<List<NoteEntity>> = noteRepository.notes
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
-    // Exposed as public val for Compose UI to observe
-    val allNotes: Flow<List<Note>> = repository.getAllNotes()
+    fun createNote(label: String, title: String, content: String) {
+        val safeTitle = title.trim()
+        val safeContent = content.trim()
+        if (safeTitle.isBlank() || safeContent.isBlank()) return
 
-    fun insertNote(note: Note) {
+        val now = System.currentTimeMillis()
+        val note = NoteEntity(
+            label = label.trim().ifBlank { "General" },
+            title = safeTitle,
+            content = safeContent,
+            createdAt = now,
+            updatedAt = now
+        )
+
         viewModelScope.launch {
-            repository.insertNote(note)
+            noteRepository.create(note)
         }
     }
 
-    fun updateNote(note: Note) {
+    fun updateNote(note: NoteEntity, label: String, title: String, content: String) {
+        val safeTitle = title.trim()
+        val safeContent = content.trim()
+        if (safeTitle.isBlank() || safeContent.isBlank()) return
+
+        val updated = note.copy(
+            label = label.trim().ifBlank { note.label },
+            title = safeTitle,
+            content = safeContent,
+            updatedAt = System.currentTimeMillis()
+        )
         viewModelScope.launch {
-            repository.updateNote(note)
+            noteRepository.update(updated)
         }
     }
 
-    fun deleteNote(note: Note) {
+    fun deleteNote(note: NoteEntity) {
         viewModelScope.launch {
-            repository.deleteNote(note)
+            noteRepository.delete(note)
         }
-    }
-
-    fun getNoteById(noteId: Int): Flow<Note?> {
-        return repository.getNoteById(noteId)
     }
 }

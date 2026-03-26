@@ -3,28 +3,26 @@ package com.example.projecttracker.data.db
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.projecttracker.data.model.Project
+import com.example.projecttracker.data.model.ProjectEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProjectDao {
-    @Query("SELECT * FROM Project")
-    fun getAllProjects(): Flow<List<Project>>
+    @Query("SELECT * FROM projects ORDER BY createdAt DESC")
+    fun observeProjects(): Flow<List<ProjectEntity>>
 
-    @Query("SELECT * FROM Project WHERE id = :projectId")
-    fun getProjectById(projectId: Int): Flow<Project?>
+    @Query("SELECT * FROM projects WHERE id = :projectId")
+    fun observeProject(projectId: Long): Flow<ProjectEntity?>
 
-    @Insert
-    suspend fun insertProject(project: Project)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(project: ProjectEntity): Long
 
     @Update
-    suspend fun updateProject(project: Project)
+    suspend fun update(project: ProjectEntity)
 
     @Delete
-    suspend fun deleteProject(project: Project)
-
-    @Query("DELETE FROM Project WHERE id = :projectId")
-    suspend fun deleteProjectById(projectId: Int)
+    suspend fun delete(project: ProjectEntity)
 }

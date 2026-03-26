@@ -3,143 +3,39 @@ package com.example.projecttracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavType
-import androidx.navigation.compose.*
-import androidx.navigation.navArgument
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.room.Room
 import com.example.projecttracker.data.db.AppDatabase
-import com.example.projecttracker.data.repository.NotesRepository
+import com.example.projecttracker.data.repository.NoteRepository
 import com.example.projecttracker.data.repository.ProjectRepository
-import com.example.projecttracker.ui.navigation.BottomNavigationBar
-import com.example.projecttracker.ui.screens.dashboard.CreateProjectScreen
-import com.example.projecttracker.ui.screens.dashboard.DashboardScreen
-import com.example.projecttracker.ui.screens.dashboard.ProjectDetailScreen
-import com.example.projecttracker.ui.screens.notes.Notes
-import com.example.projecttracker.ui.screens.pomodoro.PomodoroScreen
+import com.example.projecttracker.data.repository.TaskRepository
+import com.example.projecttracker.ui.ProjectTrackerApp
 import com.example.projecttracker.ui.theme.ProjectTrackerTheme
-import com.example.projecttracker.viewmodel.AppViewModel
-import com.example.projecttracker.viewmodel.AppViewModelFactory
-import com.example.projecttracker.viewmodel.NotesViewModel
-import com.example.projecttracker.viewmodel.NotesViewModelFactory
-
-sealed class Screen(val route: String) {
-    data object Dashboard : Screen("dashboard")
-    data object Pomodoro : Screen("pomodoro")
-    data object Notes : Screen("notes")
-    data object CreateProject : Screen("createProject")
-    data object ProjectDetail : Screen("projectDetail/{projectId}")
-}
 
 class MainActivity : ComponentActivity() {
-    private lateinit var viewModel: AppViewModel
-    private lateinit var notesViewModel: NotesViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        val database = AppDatabase.getDatabase(applicationContext)
-        val repository = ProjectRepository(database.projectDao(), database.taskDao())
-        val viewModelFactory = AppViewModelFactory(repository)
+        val database = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "project_tracker.db"
+        ).fallbackToDestructiveMigration(dropAllTables = true)
+            .build()
 
-        viewModel = ViewModelProvider(this, viewModelFactory)[AppViewModel::class.java]
-
-        val notesRepository = NotesRepository(database.notesDao())
-        val notesViewModelFactory = NotesViewModelFactory(notesRepository)
-        notesViewModel = ViewModelProvider(this, notesViewModelFactory)[NotesViewModel::class.java]
+        val projectRepository = ProjectRepository(database.projectDao())
+        val taskRepository = TaskRepository(database.taskDao())
+        val noteRepository = NoteRepository(database.noteDao())
 
         setContent {
             ProjectTrackerTheme {
-                MainScreen(viewModel, notesViewModel)
+                ProjectTrackerApp(
+                    projectRepository = projectRepository,
+                    taskRepository = taskRepository,
+                    noteRepository = noteRepository
+                )
             }
         }
-    }
-}
-
-@Composable
-fun MainScreen(viewModel: AppViewModel, notesViewModel: NotesViewModel) {
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
-    val bottomBarRoutes = listOf(
-        Screen.Dashboard.route,
-        Screen.Pomodoro.route,
-        Screen.Notes.route
-    )
-
-    Scaffold(
-        topBar = { TopBar() },
-        bottomBar = {
-            if (currentRoute in bottomBarRoutes) {
-                BottomNavigationBar(navController)
-            }
-        }
-    ) { paddingValues ->
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues)) {
-
-            NavHost(
-                navController = navController,
-                startDestination = Screen.Dashboard.route,
-                enterTransition = { fadeIn(animationSpec = tween(600)) },
-                exitTransition = { fadeOut(animationSpec = tween(600)) },
-            ) {
-                composable(Screen.Dashboard.route) {
-                    DashboardScreen(navController, viewModel)
-                }
-                composable(Screen.Pomodoro.route) {
-                    PomodoroScreen()
-                }
-                composable(Screen.Notes.route) {
-                    Notes(notesViewModel)
-                }
-                composable(Screen.CreateProject.route) {
-                    CreateProjectScreen(navController, viewModel)
-                }
-                composable(
-                    route = Screen.ProjectDetail.route,
-                    arguments = listOf(navArgument("projectId") { type = NavType.IntType }),
-                    enterTransition = { fadeIn( animationSpec = tween(600)) },
-                    exitTransition = { fadeOut( animationSpec = tween(600)) }
-                ) { backStackEntry ->
-                    val projectId = backStackEntry.arguments?.getInt("projectId")
-                    projectId?.let {
-//                        LaunchedEffect(projectId) {
-//                            viewModel.loadProject(projectId)
-//                            viewModel.loadTask(projectId)
-//                        }
-                        ProjectDetailScreen(projectId = it, navController = navController, viewModel = viewModel)
-                    } ?: PlaceholderScreen("Invalid Project ID")
-                }
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBar() {
-    TopAppBar(
-        title = { Text("Project Tracker") },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = MaterialTheme.colorScheme.onPrimary
-        )
-    )
-}
-
-@Composable
-fun PlaceholderScreen(message: String) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(message, style = MaterialTheme.typography.bodyLarge)
     }
 }

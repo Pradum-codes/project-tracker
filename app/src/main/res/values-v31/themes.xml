@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- 🚀 Splash-enabled Main Theme -->
-    <style name="Theme.ProjectTracker" parent="Theme.ProjectTracker.App">
-        <!-- Splash screen background color -->
-        <item name="android:windowSplashScreenBackground">@color/black</item>
-
-        <!-- Splash screen animated icon -->
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-
-        <!-- Icon background color (optional) -->
-        <item name="android:windowSplashScreenIconBackgroundColor">@color/white</item>
-        <item name="android:windowSplashScreenAnimationDuration">1500</item>
-        <!-- Theme to apply after splash ends -->
-        <item name="postSplashScreenTheme">@style/Theme.ProjectTracker.App</item>
+<resources>
+    <style name="Theme.ProjectTracker" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/launcher_icon_tracker</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_icon_bg</item>
+        <item name="postSplashScreenTheme">@style/Theme.ProjectTracker.NoActionBar</item>
     </style>
 
-    <!-- 🎨 App's Actual Theme -->
-    <style name="Theme.ProjectTracker.App" parent="android:Theme.Material.Light.NoActionBar">
-        <!-- Define your own typography, colors, shapes here if needed -->
-    </style>
-
+    <style name="Theme.ProjectTracker.NoActionBar" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

@@ -3,40 +3,26 @@ package com.example.projecttracker.data.db
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.projecttracker.data.model.Task
+import com.example.projecttracker.data.model.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM Task WHERE projectId = :projectId")
-    fun getTasksForProject(projectId: Int): Flow<List<Task>>
+    @Query("SELECT * FROM tasks WHERE projectId = :projectId ORDER BY createdAt DESC")
+    fun observeTasks(projectId: Long): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM Task WHERE id = :taskId")
-    fun getTaskById(taskId: Int): Flow<Task?>
-
-    @Insert
-    suspend fun insertTask(task: Task)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(task: TaskEntity): Long
 
     @Update
-    suspend fun updateTask(task: Task)
+    suspend fun update(task: TaskEntity)
 
     @Delete
-    suspend fun deleteTask(task: Task)
+    suspend fun delete(task: TaskEntity)
 
-    @Query("DELETE FROM Task WHERE projectId = :projectId")
-    suspend fun deleteTasksForProject(projectId: Int)
-
-    @Query("SELECT COUNT(*) FROM Task WHERE projectId = :projectId AND isDone == 1")
-    suspend fun countTaskCompleted(projectId: Int): Int
-
-    @Query("SELECT COUNT(*) FROM Task WHERE projectId = :projectId AND isDone == 0")
-    suspend fun countTaskRemaining(projectId: Int): Int
-
-    @Query("SELECT * FROM Task")
-    fun getAllTasks(): Flow<List<Task>>
-
-    @Query("DELETE FROM Task WHERE id = :taskId")
-    suspend fun deleteTaskById(taskId: Int)
+    @Query("DELETE FROM tasks WHERE projectId = :projectId")
+    suspend fun deleteByProject(projectId: Long)
 }
