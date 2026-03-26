@@ -1,7 +1,7 @@
 package com.example.projecttracker.ui.theme
 
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 
 private val LightColors = lightColorScheme(
@@ -29,10 +29,30 @@ private val LightColors = lightColorScheme(
     onErrorContainer = OnErrorContainer
 )
 
+private val DarkColors = darkColorScheme(
+    primary = DarkPrimary,
+    onPrimary = DarkOnPrimary,
+    primaryContainer = DarkPrimaryContainer,
+    onPrimaryContainer = DarkOnPrimaryContainer,
+    secondary = DarkSecondary,
+    onSecondary = DarkOnSecondary,
+    secondaryContainer = DarkSecondaryContainer,
+    onSecondaryContainer = DarkOnSecondaryContainer,
+    background = DarkBackground,
+    onBackground = DarkOnBackground,
+    surface = DarkSurface,
+    onSurface = DarkOnSurface
+)
+
 @Composable
-fun ProjectTrackerTheme(content: @Composable () -> Unit) {
+fun ProjectTrackerTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colors = if (darkTheme) DarkColors else LightColors
+
     MaterialTheme(
-        colorScheme = LightColors,
+        colorScheme = colors,
         typography = ProjectTrackerTypography,
         content = content
     )
