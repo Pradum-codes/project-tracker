@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -27,6 +28,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -45,13 +47,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
-private const val SESSION_SECONDS = 25 * 60
+private const val DEFAULT_SESSION_SECONDS = 25 * 60
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PomodoroScreen() {
     var isRunning by rememberSaveable { mutableStateOf(false) }
-    var remainingSeconds by rememberSaveable { mutableStateOf(SESSION_SECONDS) }
+    var sessionDurationSeconds by rememberSaveable { mutableStateOf(DEFAULT_SESSION_SECONDS) }
+    var remainingSeconds by rememberSaveable { mutableStateOf(DEFAULT_SESSION_SECONDS) }
+    var isSettingsOpen by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(isRunning, remainingSeconds) {
         if (!isRunning) return@LaunchedEffect
@@ -63,7 +67,7 @@ fun PomodoroScreen() {
         remainingSeconds -= 1
     }
 
-    val progress = remainingSeconds.toFloat() / SESSION_SECONDS.toFloat()
+    val progress = remainingSeconds.toFloat() / sessionDurationSeconds.toFloat()
     val minutes = remainingSeconds / 60
     val seconds = remainingSeconds % 60
     val timerText = "%02d:%02d".format(minutes, seconds)
@@ -72,14 +76,26 @@ fun PomodoroScreen() {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "ProjectTracker",
-                        style = MaterialTheme.typography.headlineSmall,
-                        color = MaterialTheme.colorScheme.primary
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier = Modifier
+                                .size(34.dp)
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.surfaceContainerHighest),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text("P", style = MaterialTheme.typography.labelLarge)
+                        }
+                        Spacer(modifier = Modifier.size(10.dp))
+                        Text(
+                            text = "ProjectTracker",
+                            style = MaterialTheme.typography.headlineSmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { isSettingsOpen = true }) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
                             contentDescription = "Settings",
@@ -178,7 +194,7 @@ fun PomodoroScreen() {
                 IconButton(
                     onClick = {
                         isRunning = false
-                        remainingSeconds = SESSION_SECONDS
+                        remainingSeconds = sessionDurationSeconds
                     },
                     modifier = Modifier
                         .clip(CircleShape)
@@ -251,5 +267,36 @@ fun PomodoroScreen() {
                 }
             }
         }
+    }
+
+    if (isSettingsOpen) {
+        AlertDialog(
+            onDismissRequest = { isSettingsOpen = false },
+            title = { Text("Pomodoro Settings") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text("Session length")
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        listOf(15, 25, 50).forEach { minutesOption ->
+                            TextButton(
+                                onClick = {
+                                    isRunning = false
+                                    sessionDurationSeconds = minutesOption * 60
+                                    remainingSeconds = sessionDurationSeconds
+                                    isSettingsOpen = false
+                                }
+                            ) {
+                                Text("${minutesOption}m")
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { isSettingsOpen = false }) {
+                    Text("Close")
+                }
+            }
+        )
     }
 }

@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
@@ -29,11 +30,14 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.Modifier
@@ -43,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.projecttracker.data.model.ProjectEntity
 import com.example.projecttracker.util.formatShortDate
 import com.example.projecttracker.util.projectColor
@@ -57,6 +62,13 @@ fun ProjectsScreen(
     onOpenProject: (Long) -> Unit
 ) {
     val projects by viewModel.projects.collectAsStateWithLifecycle()
+    var showSettings by rememberSaveable { mutableStateOf(false) }
+    var sortNewestFirst by rememberSaveable { mutableStateOf(true) }
+    val displayedProjects = if (sortNewestFirst) {
+        projects.sortedByDescending { it.createdAt }
+    } else {
+        projects.sortedBy { it.createdAt }
+    }
 
     Scaffold(
         topBar = {
@@ -85,7 +97,7 @@ fun ProjectsScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { showSettings = true }) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
                             contentDescription = "Settings",
@@ -123,7 +135,7 @@ fun ProjectsScreen(
                 )
                 .padding(padding)
         ) {
-            if (projects.isEmpty()) {
+            if (displayedProjects.isEmpty()) {
                 EmptyProjectsState(
                     modifier = Modifier.fillMaxSize(),
                     onAddProject = onAddProject
@@ -150,7 +162,7 @@ fun ProjectsScreen(
                             )
                         }
                     }
-                    itemsIndexed(projects, key = { _, item -> item.id }) { index, project ->
+                    itemsIndexed(displayedProjects, key = { _, item -> item.id }) { index, project ->
                         ProjectBentoCard(
                             index = index,
                             project = project,
@@ -161,6 +173,36 @@ fun ProjectsScreen(
                 }
             }
         }
+    }
+
+    if (showSettings) {
+        AlertDialog(
+            onDismissRequest = { showSettings = false },
+            title = { Text("Dashboard Settings") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Text("Project order")
+                    Text(
+                        text = if (sortNewestFirst) "Newest first" else "Oldest first",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        sortNewestFirst = !sortNewestFirst
+                    }
+                ) {
+                    Text(if (sortNewestFirst) "Switch to oldest" else "Switch to newest")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showSettings = false }) {
+                    Text("Close")
+                }
+            }
+        )
     }
 }
 

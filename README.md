@@ -4,11 +4,13 @@ ProjectTracker is a fresh, from-scratch Android app built with Kotlin + Jetpack 
 
 ## What's in this rebuild
 
-- **Projects dashboard** with empty states, clear hierarchy, and quick create actions
-- **Project detail view** with tasks, status, and lightweight progress cues
-- **Optional due dates** captured during project creation and displayed in views
+- **Projects dashboard** redesigned from Stitch with bento-style project cards
+- **Project detail view** with editable task workflow (add/toggle/delete) and focus capture
+- **Notes workspace** with Room-backed notes (create/edit/delete)
+- **Pomodoro timer** with functional start/pause/reset countdown
+- **Optional due dates** captured during project creation and displayed across views
 - **Room-powered local storage** with clean repository boundaries
-- **Compose-first UI** using Material 3, spacing rhythm, and accessible contrast
+- **Compose-first UI** using Material 3 with Stitch-aligned spacing and visual language
 
 ## Tech Stack
 
@@ -27,6 +29,7 @@ ProjectTracker is a fresh, from-scratch Android app built with Kotlin + Jetpack 
 
 - Debug APK: `./gradlew assembleDebug`
 - Run unit tests: `./gradlew test`
+- Run lint: `./gradlew lintDebug`
 
 ## Project Structure
 
@@ -38,3 +41,4 @@ ProjectTracker is a fresh, from-scratch Android app built with Kotlin + Jetpack 
 ## Notes
 
 - Local settings like `local.properties` are intentionally ignored by Git.
+- Database schema is currently on version `2` and uses destructive migration fallback in dev builds.

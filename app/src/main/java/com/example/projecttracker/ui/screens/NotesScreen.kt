@@ -59,6 +59,9 @@ import com.example.projecttracker.viewmodel.NotesViewModel
 fun NotesScreen(viewModel: NotesViewModel) {
     val notes by viewModel.notes.collectAsStateWithLifecycle()
 
+    var showSettings by rememberSaveable { mutableStateOf(false) }
+    var sortNewestFirst by rememberSaveable { mutableStateOf(true) }
+    var previewLines by rememberSaveable { mutableStateOf(3) }
     var isEditorOpen by rememberSaveable { mutableStateOf(false) }
     var editingNoteId by rememberSaveable { mutableStateOf<Long?>(null) }
     var labelInput by rememberSaveable { mutableStateOf("") }
@@ -82,6 +85,11 @@ fun NotesScreen(viewModel: NotesViewModel) {
     }
 
     val editingNote = notes.firstOrNull { it.id == editingNoteId }
+    val displayedNotes = if (sortNewestFirst) {
+        notes.sortedByDescending { it.updatedAt }
+    } else {
+        notes.sortedBy { it.updatedAt }
+    }
 
     Scaffold(
         topBar = {
@@ -106,7 +114,7 @@ fun NotesScreen(viewModel: NotesViewModel) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { showSettings = true }) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
                             contentDescription = "Settings",
@@ -168,7 +176,7 @@ fun NotesScreen(viewModel: NotesViewModel) {
                     }
                 }
 
-                if (notes.isEmpty()) {
+                if (displayedNotes.isEmpty()) {
                     item {
                         Surface(
                             shape = RoundedCornerShape(18.dp),
@@ -194,9 +202,10 @@ fun NotesScreen(viewModel: NotesViewModel) {
                         }
                     }
                 } else {
-                    items(notes, key = { it.id }) { note ->
+                    items(displayedNotes, key = { it.id }) { note ->
                         NoteCardItem(
                             note = note,
+                            previewLines = previewLines,
                             onOpen = { openEditEditor(note) },
                             onDelete = { viewModel.deleteNote(note) }
                         )
@@ -272,11 +281,46 @@ fun NotesScreen(viewModel: NotesViewModel) {
             }
         )
     }
+
+    if (showSettings) {
+        AlertDialog(
+            onDismissRequest = { showSettings = false },
+            title = { Text("Notes Settings") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(
+                        text = "Sort: ${if (sortNewestFirst) "Newest first" else "Oldest first"}",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = "Preview lines: $previewLines",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            },
+            confirmButton = {
+                Row {
+                    TextButton(onClick = { sortNewestFirst = !sortNewestFirst }) {
+                        Text("Toggle sort")
+                    }
+                    TextButton(onClick = { previewLines = if (previewLines == 3) 6 else 3 }) {
+                        Text("Toggle preview")
+                    }
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showSettings = false }) {
+                    Text("Close")
+                }
+            }
+        )
+    }
 }
 
 @Composable
 private fun NoteCardItem(
     note: NoteEntity,
+    previewLines: Int,
     onOpen: () -> Unit,
     onDelete: () -> Unit
 ) {
@@ -331,7 +375,7 @@ private fun NoteCardItem(
                 text = note.content,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 3,
+                maxLines = previewLines,
                 overflow = TextOverflow.Ellipsis
             )
         }

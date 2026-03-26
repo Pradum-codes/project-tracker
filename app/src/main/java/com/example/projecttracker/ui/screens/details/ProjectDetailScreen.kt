@@ -21,6 +21,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -34,6 +35,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -67,6 +69,8 @@ fun ProjectDetailScreen(
     val project by viewModel.project.collectAsStateWithLifecycle()
     val tasks by viewModel.tasks.collectAsStateWithLifecycle()
     var newTaskTitle by rememberSaveable { mutableStateOf("") }
+    var showSettings by rememberSaveable { mutableStateOf(false) }
+    var showCompletedTasks by rememberSaveable { mutableStateOf(true) }
 
     Scaffold(
         topBar = {
@@ -88,7 +92,7 @@ fun ProjectDetailScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { showSettings = true }) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
                             contentDescription = "Settings",
@@ -132,6 +136,7 @@ fun ProjectDetailScreen(
         }
 
         val activeTaskCount = tasks.count { !it.isDone }
+        val displayedTasks = if (showCompletedTasks) tasks else tasks.filter { !it.isDone }
 
         Column(
             modifier = Modifier
@@ -191,12 +196,12 @@ fun ProjectDetailScreen(
                         }
                     }
                 }
-                if (tasks.isEmpty()) {
+                if (displayedTasks.isEmpty()) {
                     item {
                         EmptyTaskState()
                     }
                 } else {
-                    items(tasks, key = { it.id }) { task ->
+                    items(displayedTasks, key = { it.id }) { task ->
                         TaskRow(
                             task = task,
                             onToggle = { viewModel.toggleTask(task) },
@@ -206,6 +211,37 @@ fun ProjectDetailScreen(
                 }
             }
         }
+    }
+
+    if (showSettings) {
+        AlertDialog(
+            onDismissRequest = { showSettings = false },
+            title = { Text("Project Settings") },
+            text = {
+                Text(
+                    text = if (showCompletedTasks) {
+                        "Completed tasks are visible"
+                    } else {
+                        "Completed tasks are hidden"
+                    },
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = { showCompletedTasks = !showCompletedTasks }
+                ) {
+                    Text(
+                        if (showCompletedTasks) "Hide completed" else "Show completed"
+                    )
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showSettings = false }) {
+                    Text("Close")
+                }
+            }
+        )
     }
 }
 
@@ -228,6 +264,7 @@ private fun ProjectHeader(project: ProjectEntity) {
 
 @Composable
 private fun ProjectStackCard(project: ProjectEntity) {
+    val repositoryText = extractRepositoryRef(project.description)
     val tags = project.description
         .split(",")
         .map { it.trim() }
@@ -298,12 +335,7 @@ private fun ProjectStackCard(project: ProjectEntity) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Text(
-                        text = "link",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.secondary
-                    )
-                    Text(
-                        text = "github.com/design/repo",
+                        text = repositoryText,
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.secondary
                     )
@@ -316,6 +348,12 @@ private fun ProjectStackCard(project: ProjectEntity) {
             }
         }
     }
+}
+
+private fun extractRepositoryRef(description: String): String {
+    val regex = Regex("""https?://\S+""")
+    val match = regex.find(description)?.value
+    return match ?: "No repository linked"
 }
 
 @Composable

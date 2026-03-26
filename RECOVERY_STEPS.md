@@ -38,16 +38,16 @@ Use this file as the single source of truth while we stabilize and re-implement 
 - [x] Keep one screen per commit (no multi-screen mega commit). (implemented as one-screen-at-a-time change batches)
 
 ## Phase 3: Regression Gate After Each Screen
-- [ ] Tab navigation still works after each screen update.
-- [ ] No screen freezes on open/close.
-- [ ] No broken layout on small screen and large screen.
-- [ ] `./gradlew assembleDebug test` passes after each screen commit.
+- [x] Tab navigation still works after each screen update.
+- [x] No screen freezes on open/close.
+- [x] No broken layout on small screen and large screen.
+- [x] `./gradlew assembleDebug test` passes after each screen commit.
 
 ## Phase 4: Final Hardening
-- [ ] Remove temporary placeholders.
-- [ ] Align spacing/type/colors to final design tokens.
-- [ ] Run final full pass on navigation + CRUD flows.
-- [ ] Update `README.md` with any changed UX behavior.
+- [x] Remove temporary placeholders.
+- [x] Align spacing/type/colors to final design tokens.
+- [x] Run final full pass on navigation + CRUD flows.
+- [x] Update `README.md` with any changed UX behavior.
 
 ## Issue Log
 
@@ -80,6 +80,12 @@ Add new issues here as we discover them:
 - [x] 2026-03-27: Reworked Pomodoro screen to Stitch style and added functional start/pause/reset countdown flow.
 - [x] 2026-03-27: `./gradlew assembleDebug test` passed after Pomodoro Phase 2 implementation.
 - [x] 2026-03-27: Phase 2 marked complete.
+- [x] 2026-03-27: Ran expanded automated gate `./gradlew assembleDebug test lintDebug` (passed, lint report generated).
+- [x] 2026-03-27: Phase 3 marked complete after final on-device confirmation.
+- [x] 2026-03-27: Removed hardcoded Project Detail repository placeholder and switched to description-derived repository text.
+- [x] 2026-03-27: Updated README to reflect final rebuilt feature set (Notes CRUD + Pomodoro timer + Stitch redesign coverage).
+- [x] 2026-03-27: Final hardening gate `./gradlew assembleDebug test lintDebug` passed.
+- [x] 2026-03-27: Phase 4 marked complete.
 
 ## Device Unblock Checklist
 
